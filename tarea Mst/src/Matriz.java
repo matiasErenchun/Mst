@@ -85,7 +85,6 @@ public class Matriz
             random = SecureRandom.getInstance("SHA1PRNG", "SUN");
             random.nextBytes(new byte[1]);
             respuesta = random.nextDouble();
-            respuesta=respuesta*100;
 
         }
         catch (NoSuchAlgorithmException e)
