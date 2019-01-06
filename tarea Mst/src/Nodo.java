@@ -29,20 +29,20 @@ public class Nodo
     @Override
     public String toString()
     {
-        return "nodo:"+this.nodo+" x: "+this.getX()+" y: "+this.getY();
+        return "nodo:"+this.nodo+" Padre:"+this.getPadre()+" x: "+this.getX()+" y: "+this.getY();
     }
 
-    public void agregarArista(int arista)
+    public void agregarConexion(int arista)
     {
         this.conexiones.add(arista);
     }
 
-    public ArrayList<Integer> getAristas()
+    public ArrayList<Integer> getConexiones()
     {
         return this.conexiones;
     }
 
-    public void mostrarAristas()
+    public void mostrarConexiones()
     {
         System.out.println(this.conexiones.toString());
     }
@@ -62,5 +62,7 @@ public class Nodo
         this.padre=nuevoPadre;
         return this.getPadre();
     }
+
+
 
 }

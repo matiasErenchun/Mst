@@ -22,6 +22,8 @@ public class Matriz
         this.Llenar("0");
         this.cargarAristas(cNodos,densidad);
         this.cargarConeccionesNodos();
+        this.reducirBosque(0);
+        this.mostrarNodos();
         this.mostrarMatriz();
         this.listaAristas();
     }
@@ -98,8 +100,6 @@ public class Matriz
 
         return respuesta;
     }
-
-
 
     public void mostrarMatriz()
     {
@@ -194,7 +194,7 @@ public class Matriz
         for (Nodo noddo:this.nodos)
         {
             System.out.println("nodo"+noddo.getNodo());
-            noddo.mostrarAristas();
+            noddo.mostrarConexiones();
         }
         for (int j = 0; j <aristas.size() ; j++)
         {
@@ -215,7 +215,7 @@ public class Matriz
             {
                 if(this.miMatriz[i][j].equals("1"))
                 {
-                    this.getNodo(i).agregarArista(j);
+                    this.getNodo(i).agregarConexion(j);
                 }
                 j++;
             }
@@ -244,6 +244,27 @@ public class Matriz
     public Nodo getNodo(int index)
     {
         return this.nodos[index];
+    }
+
+    public int union(int x,int y)
+    {
+        int raiz=this.getNodo(x).getPadre();
+        this.getNodo(y).setPadre(raiz);
+        return this.getNodo(y).getPadre();
+    }
+
+    public void reducirBosque(int nodo)
+    {
+        for (Nodo noodo:this.nodos)
+        {
+            for (int intNodo:noodo.getConexiones())
+            {
+                if(noodo.getPadre()!= this.getNodo(intNodo).getPadre())
+                {
+                    this.union(noodo.getPadre(),intNodo);
+                }
+            }
+        }
     }
 
 }
