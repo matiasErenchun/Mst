@@ -21,8 +21,8 @@ public class Matriz
         this.mostrarNodos();
         this.Llenar("0");
         this.cargarAristas(cNodos,densidad);
+        this.cargarConeccionesNodos();
         this.mostrarMatriz();
-        this.mostrar();
         this.listaAristas();
     }
 
@@ -61,7 +61,7 @@ public class Matriz
         {
             Double x=this.generarValor();
             double y=this.generarValor();
-            Nodo auxNodo= new Nodo(x,y);
+            Nodo auxNodo= new Nodo(i,x,y);
             this.nodos[i]=auxNodo;
             i++;
         }
@@ -72,7 +72,7 @@ public class Matriz
 
         for (int i = 0; i <this.nodos.length ; i++)
         {
-            System.out.println("el nodo i:"+i+", "+this.nodos[i].toString());
+            System.out.println(this.nodos[i].toString());
         }
     }
 
@@ -100,10 +100,6 @@ public class Matriz
     }
 
 
-    public void mostrar()
-    {
-
-    }
 
     public void mostrarMatriz()
     {
@@ -126,6 +122,8 @@ public class Matriz
         return this.nodos;
     }
 
+
+    // carga la matriz con  la cantidad de aristas resultantes  de densidad*((n*(n-1))/2)
     public void cargarAristas(int n ,float densidad)
     {
         Float fAristas = densidad*((n*(n-1))/2);
@@ -147,6 +145,7 @@ public class Matriz
         }
     }
 
+    // genera un valor pseudo aleatorio entre 0 y la cantidad de nodos
     public int generarValorInt(int nodos)
     {
         SecureRandom random = new SecureRandom();
@@ -170,7 +169,7 @@ public class Matriz
         return respuesta;
     }
 
-
+    // regresa una lista de aristas  sina ristas repetidas ( se copia la diagonal inferior)
     public ArrayList<Arista> listaAristas()
     {
         ArrayList<Arista>aristas = new ArrayList<>();
@@ -192,6 +191,11 @@ public class Matriz
             }
             i++;
         }
+        for (Nodo noddo:this.nodos)
+        {
+            System.out.println("nodo"+noddo.getNodo());
+            noddo.mostrarAristas();
+        }
         for (int j = 0; j <aristas.size() ; j++)
         {
             System.out.println("j:"+j+aristas.get(j).mostrar());
@@ -200,7 +204,26 @@ public class Matriz
         return aristas;
     }
 
+    // cargas en la lista de conecciones del nodo con cuales otros nodos  esta conectado.
+    public void cargarConeccionesNodos()
+    {
+        int i=0;
+        while(i<this.miMatriz.length)
+        {
+            int j=0;
+            while(j<this.miMatriz.length)
+            {
+                if(this.miMatriz[i][j].equals("1"))
+                {
+                    this.getNodo(i).agregarArista(j);
+                }
+                j++;
+            }
+            i++;
+        }
+    }
 
+    // ados dos  los dos nodos de una arista  calcula el peso  de la arista, que no es mas que la distancia euclidiana entre estos dos nodos.
     public Double calcularPeso(int nodo1, int nodo2)
     {
         Nodo nod1=this.getNodo(nodo1);
@@ -217,8 +240,10 @@ public class Matriz
         return peso;
     }
 
+    // este metodo retorna el nodo en el indis indicado.
     public Nodo getNodo(int index)
     {
         return this.nodos[index];
     }
+
 }
