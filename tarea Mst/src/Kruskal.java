@@ -1,5 +1,6 @@
+import java.util.StringTokenizer;
 
-public class dijkstra
+public class Kruskal
 {
     private static Matriz m;
     private static String v;
@@ -8,6 +9,7 @@ public class dijkstra
     private static String repeticiones;
     public static void main(String[] args)
     {
+        /*
         boolean b=false;
         if(args.length==4)
         {
@@ -26,15 +28,26 @@ public class dijkstra
         int nNodos=Integer.parseInt(nodos);
         float dDensidad =Float.parseFloat(densidad);
         Double rep =Double.parseDouble(repeticiones);
+        */
+        Double rep=new Double(10);
         m=new Matriz();
-        long tiempoMedio=0;
-        for (int i = 0; i < rep ; i++)
+        Long tiempoMedio=new Long(0);
+        Double largomedio= new Double(0);
+        for (int i = 0; i < 10 ; i++)
         {
-            tiempoMedio+=m.correr(nNodos,  dDensidad, b);
+            String salida=m.correr(100,  (float)0.5, false);
+            StringTokenizer toke= new StringTokenizer(salida);
+            String tiempo=toke.nextToken();
+            System.out.println("t "+tiempo);
+            String largo=toke.nextToken();
+            System.out.println("l "+largo);
+            tiempoMedio+=Long.parseLong(tiempo);
+            largomedio+=Double.parseDouble(largo);
         }
         Double nTMedio=tiempoMedio/rep;
-        nTMedio=nTMedio/1e-9;
-        System.out.println("tiempo medio que demora el algoritmos :"+nTMedio);
+        largomedio=largomedio/rep;
+        nTMedio=nTMedio;
+        System.out.println("tiempo medio que demora el algoritmos :"+nTMedio +", con largo medio del MSt de :"+largomedio);
 
 
 

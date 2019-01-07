@@ -14,7 +14,7 @@ public class Matriz
 
 
 
-    public long correr(int cNodos, float densidad, boolean b)
+    public String  correr(int cNodos, float densidad, boolean b)
     {
 
         this.miMatriz = new String[cNodos][cNodos];
@@ -25,15 +25,16 @@ public class Matriz
         this.cargarAristas(cNodos,densidad);
         this.cargarConeccionesNodos();
         this.listaAristas();
-        long a=System.nanoTime();
+        Long a=System.nanoTime();
         this.aristasMst=this.miMst.getMst(this.listaAristas());
-        long c=System.nanoTime()-a;;
+        Long c=System.nanoTime()-a;;
         if(b)
         {
             this.mostrarAristasMst();
         }
-
-        return c;
+        Double costo=this.calcularLargo();
+        String salida=c.toString()+" "+costo.toString();
+        return salida;
     }
 
     public void Llenar(String relleno)
@@ -261,6 +262,16 @@ public class Matriz
             Nodo nodo2= this.nodos[a.getNodo2()];
             System.out.println(nodo1.getX()+" "+nodo1.getY()+" "+nodo2.getX()+" "+nodo2.getY()+" "+a.getPeso());
         }
+    }
+
+    public Double calcularLargo()
+    {
+        Double largo=new Double(0);
+        for (Arista a:this.aristasMst)
+        {
+            largo+=a.getPeso();
+        }
+        return largo;
     }
 
 
