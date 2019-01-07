@@ -1,4 +1,4 @@
-public class Arista
+public class Arista implements Comparable<Arista>
 {
     private int nodo1;
     private int nodo2;
@@ -26,9 +26,33 @@ public class Arista
         return this.peso;
     }
 
-    public String mostrar()
+    @Override
+    public String toString()
     {
         return " nodo1:"+this.nodo1+" nodo2:"+this.nodo2+" peso:"+this.peso;
+
+    }
+
+
+
+    public int compareTo(Arista o)
+    {
+        if (this.getPeso().compareTo(o.getPeso())<0)
+        {
+            return -1;
+        }
+        else
+        {
+            if(this.getPeso().compareTo(o.getPeso())==0)
+            {
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
+
+        }
 
     }
 }

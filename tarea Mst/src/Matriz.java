@@ -9,23 +9,30 @@ public class Matriz
 {
     private String[][]miMatriz ;
     private Nodo[] nodos;
+    private Mst miMst;
 
 
 
-    public Matriz(int cNodos, float densidad)
+    public long correr(int cNodos, float densidad, boolean b)
     {
 
         this.miMatriz = new String[cNodos][cNodos];
         this.nodos = new Nodo[cNodos];
+        this.miMst=new Mst(cNodos, this.nodos);
         this.generarNodos();
-        this.mostrarNodos();
         this.Llenar("0");
         this.cargarAristas(cNodos,densidad);
         this.cargarConeccionesNodos();
-        this.reducirBosque(0);
-        this.mostrarNodos();
-        this.mostrarMatriz();
         this.listaAristas();
+        long a=System.currentTimeMillis();
+        this.miMst.getMst(this.listaAristas());
+        long c=a-System.currentTimeMillis();;
+        if(b)
+        {
+            this.miMst.mostrarAristasMst();
+        }
+
+        return c;
     }
 
     public void Llenar(String relleno)
@@ -128,7 +135,6 @@ public class Matriz
     {
         Float fAristas = densidad*((n*(n-1))/2);
         int aristas = fAristas.intValue();
-        System.out.println("aristas "+aristas);
         int i=(this.miMatriz.length)-1;
         int fila;
         int columna;
@@ -191,15 +197,7 @@ public class Matriz
             }
             i++;
         }
-        for (Nodo noddo:this.nodos)
-        {
-            System.out.println("nodo"+noddo.getNodo());
-            noddo.mostrarConexiones();
-        }
-        for (int j = 0; j <aristas.size() ; j++)
-        {
-            System.out.println("j:"+j+aristas.get(j).mostrar());
-        }
+
 
         return aristas;
     }
@@ -246,25 +244,11 @@ public class Matriz
         return this.nodos[index];
     }
 
-    public int union(int x,int y)
+
+    public int CantidadNodos()
     {
-        int raiz=this.getNodo(x).getPadre();
-        this.getNodo(y).setPadre(raiz);
-        return this.getNodo(y).getPadre();
+        return this.nodos.length;
     }
 
-    public void reducirBosque(int nodo)
-    {
-        for (Nodo noodo:this.nodos)
-        {
-            for (int intNodo:noodo.getConexiones())
-            {
-                if(noodo.getPadre()!= this.getNodo(intNodo).getPadre())
-                {
-                    this.union(noodo.getPadre(),intNodo);
-                }
-            }
-        }
-    }
 
 }
