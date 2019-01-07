@@ -25,15 +25,16 @@ public class dijkstra
         }
         int nNodos=Integer.parseInt(nodos);
         float dDensidad =Float.parseFloat(densidad);
-        int rep =Integer.parseInt(repeticiones);
+        Double rep =Double.parseDouble(repeticiones);
         m=new Matriz();
         long tiempoMedio=0;
         for (int i = 0; i < rep ; i++)
         {
             tiempoMedio+=m.correr(nNodos,  dDensidad, b);
         }
-
-        System.out.println(tiempoMedio/nNodos);
+        Double nTMedio=tiempoMedio/rep;
+        nTMedio=nTMedio/1e-9;
+        System.out.println("tiempo medio que demora el algoritmos :"+nTMedio);
 
 
 

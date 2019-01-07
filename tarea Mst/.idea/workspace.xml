@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e292ee10-2086-4acc-bb69-653b8284cc88" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/dijkstra.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/tarea Mst/Arista.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tarea Mst/Arista.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/tarea Mst/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tarea Mst/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/tarea Mst/Matriz.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tarea Mst/Matriz.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Arista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Arista.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Matriz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Matriz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Mst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mst.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dijkstra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dijkstra.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/dijkstra.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="35" column="47" lean-forward="true" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
+            <state relative-caret-position="170">
+              <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
             </state>
           </provider>
         </entry>
@@ -32,8 +27,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Matriz.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="34" column="17" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
+            <state relative-caret-position="91">
+              <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#Llenar#0;class#Matriz#0" />
@@ -54,10 +49,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Mst.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="69" column="112" selection-start-line="69" selection-start-column="112" selection-end-line="69" selection-end-column="112" />
+            <state relative-caret-position="595">
+              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1584#1585#0" expanded="true" />
+                <element signature="e#1635#1636#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -112,8 +109,8 @@
         <option value="$PROJECT_DIR$/src/UnionFind.java" />
         <option value="$PROJECT_DIR$/src/Arista.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/Mst.java" />
         <option value="$PROJECT_DIR$/src/Matriz.java" />
+        <option value="$PROJECT_DIR$/src/Mst.java" />
         <option value="$PROJECT_DIR$/src/dijkstra.java" />
       </list>
     </option>
@@ -152,7 +149,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546824114063" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546833178164" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
@@ -196,12 +193,12 @@
       <updated>1546712825653</updated>
       <workItem from="1546712829044" duration="14820000" />
       <workItem from="1546729279053" duration="6472000" />
-      <workItem from="1546803116170" duration="14365000" />
+      <workItem from="1546803116170" duration="17302000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35657000" />
+    <option name="totallyTimeSpent" value="38594000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="10" y="20" width="1346" height="688" extended-state="0" />
@@ -275,18 +272,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Mst.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="69" column="112" selection-start-line="69" selection-start-column="112" selection-end-line="69" selection-end-column="112" />
+        <state relative-caret-position="595">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1584#1585#0" expanded="true" />
+            <element signature="e#1635#1636#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Matriz.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="34" column="17" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
+        <state relative-caret-position="91">
+          <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#Llenar#0;class#Matriz#0" />
@@ -305,8 +304,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/dijkstra.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="35" column="47" lean-forward="true" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
+        <state relative-caret-position="170">
+          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
         </state>
       </provider>
     </entry>

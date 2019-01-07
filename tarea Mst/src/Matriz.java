@@ -10,6 +10,7 @@ public class Matriz
     private String[][]miMatriz ;
     private Nodo[] nodos;
     private Mst miMst;
+    private ArrayList<Arista>aristasMst;
 
 
 
@@ -18,18 +19,18 @@ public class Matriz
 
         this.miMatriz = new String[cNodos][cNodos];
         this.nodos = new Nodo[cNodos];
-        this.miMst=new Mst(cNodos, this.nodos);
+        this.miMst=new Mst(cNodos);
         this.generarNodos();
         this.Llenar("0");
         this.cargarAristas(cNodos,densidad);
         this.cargarConeccionesNodos();
         this.listaAristas();
-        long a=System.currentTimeMillis();
-        this.miMst.getMst(this.listaAristas());
-        long c=a-System.currentTimeMillis();;
+        long a=System.nanoTime();
+        this.aristasMst=this.miMst.getMst(this.listaAristas());
+        long c=System.nanoTime()-a;;
         if(b)
         {
-            this.miMst.mostrarAristasMst();
+            this.mostrarAristasMst();
         }
 
         return c;
@@ -248,6 +249,18 @@ public class Matriz
     public int CantidadNodos()
     {
         return this.nodos.length;
+    }
+
+    public void mostrarAristasMst()
+    {
+
+        int k=0;
+        for (Arista a:this.aristasMst)
+        {
+            Nodo nodo1 = this.nodos[a.getNodo1()];
+            Nodo nodo2= this.nodos[a.getNodo2()];
+            System.out.println(nodo1.getX()+" "+nodo1.getY()+" "+nodo2.getX()+" "+nodo2.getY()+" "+a.getPeso());
+        }
     }
 
 

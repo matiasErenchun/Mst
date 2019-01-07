@@ -1,6 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.PriorityQueue;
 
 public class Mst
@@ -8,11 +6,12 @@ public class Mst
 
     private ArrayList<Arista> aristasMst;
     private int cantidadNodos;
-    private Nodo[]nodos;
+    private int[]nodos;
 
-    public Mst(int cantidadNodos, Nodo [] nodos)
+    public Mst(int cantidadNodos)
     {
-        this.nodos=nodos;
+        this.nodos= new int[cantidadNodos];
+        this.cargarNodos();
         this.cantidadNodos=cantidadNodos;
         this.aristasMst = new ArrayList<Arista>();
 
@@ -30,11 +29,10 @@ public class Mst
         while(this.cantidadNodos-1>this.aristasMst.size())
         {
             Arista auxArista=aristasGrafo.poll();
-            if(this.buscar(auxArista.getNodo1())!=this.buscar(auxArista.getNodo2()))
+            if(!this.conectados(auxArista.getNodo1(),auxArista.getNodo2()))
             {
                 this.union(auxArista.getNodo1(),auxArista.getNodo2());
                 this.aristasMst.add(auxArista);
-
 
             }
 
@@ -43,32 +41,34 @@ public class Mst
         return this.aristasMst;
     }
 
+    public void cargarNodos()
+    {
+        for (int i = 0; i < this.nodos.length; i++)
+        {
+            this.nodos[i]=i;
+
+        }
+    }
+
     public void union(int x, int y)
     {
-        Nodo nodox=this.nodos[x];
-        this.nodos[y].setPadre(nodox.getPadre());
-    }
-
-    public int buscar(int x)
-    {
-        if(this.nodos[x].getPadre()!=x)
+        int auxX=this.nodos[x];
+        int auxY=this.nodos[y];
+        this.nodos[x]=auxY;
+        for (int i = 0; i <this.nodos.length ; i++)
         {
-            this.nodos[x].setPadre(this.buscar(this.nodos[x].getPadre()));
-
-        }
-
-        return this.nodos[x].getPadre();
-    }
-
-    public void mostrarAristasMst()
-    {
-        int k=0;
-        for (Arista a:this.aristasMst)
-        {
-            Nodo nodo1 = this.nodos[a.getNodo1()];
-            Nodo nodo2= this.nodos[a.getNodo2()];
-            System.out.println(nodo1.getX()+" "+nodo1.getY()+" "+nodo2.getX()+" "+nodo2.getY()+" "+a.getPeso());
+            if (this.nodos[i]==auxX)
+            {
+                this.nodos[i]=auxY;
+            }
         }
     }
+
+    public boolean conectados(int x, int y)
+    {
+        return  this.nodos[x]==this.nodos[y];
+    }
+
+
 
 }
