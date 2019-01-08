@@ -26,6 +26,7 @@ public class Mst
         {
             aristasGrafo.add(a);
         }
+
         while(this.cantidadNodos-1>this.aristasMst.size())
         {
             Arista auxArista=aristasGrafo.poll();
