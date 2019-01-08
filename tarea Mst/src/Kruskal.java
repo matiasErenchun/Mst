@@ -10,7 +10,7 @@ public class Kruskal
     public static void main(String[] args)
     {
         boolean b=false;
-
+        
         if(args.length==4)
         {
             String v=args[0];
@@ -29,6 +29,8 @@ public class Kruskal
         int nNodos=Integer.parseInt(nodos);
         float dDensidad =Float.parseFloat(densidad);
         Double rep =Double.parseDouble(repeticiones);
+
+
         m=new Matriz();
         Long tiempoMedio=new Long(0);
         Double largomedio= new Double(0);
