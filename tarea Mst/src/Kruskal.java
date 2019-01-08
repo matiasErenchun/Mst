@@ -10,7 +10,7 @@ public class Kruskal
     public static void main(String[] args)
     {
         boolean b=false;
-        
+
         if(args.length==4)
         {
             String v=args[0];
