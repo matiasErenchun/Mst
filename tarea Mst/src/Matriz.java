@@ -142,15 +142,23 @@ public class Matriz
         int columna;
         while (i<aristas)
         {
-            fila=this.generarValorInt(this.miMatriz.length);
-            columna=this.generarValorInt(this.miMatriz.length);
-            if(this.miMatriz[fila][columna]!="1" && fila!=columna )
+            if(densidad==1)
             {
-                this.miMatriz[fila][columna]="1";
-                this.miMatriz[columna][fila]="1";
-                i++;
+                this.Llenar("1");
+
+                return;
+            }
+            else {
+                fila = this.generarValorInt(this.miMatriz.length);
+                columna = this.generarValorInt(this.miMatriz.length);
+                if (this.miMatriz[fila][columna] != "1" && fila != columna) {
+                    this.miMatriz[fila][columna] = "1";
+                    this.miMatriz[columna][fila] = "1";
+                    i++;
+                }
             }
         }
+
     }
 
     // genera un valor pseudo aleatorio entre 0 y la cantidad de nodos
